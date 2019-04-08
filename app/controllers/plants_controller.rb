@@ -2,7 +2,7 @@ class PlantsController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index
-    @plants = Plant.includes(:user).order("created_at DESC")
+    @plants = Plant.includes(:user).order(created_at: :desc)
   end
 
   def show
