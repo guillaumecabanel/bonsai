@@ -6,7 +6,7 @@ class Garden::PlantsController < ApplicationController
   end
 
   def show
-    @moments = @plant.care_moments.order("date DESC")
+    @moments = @plant.care_moments.order(date: :desc)
 
     @last_moment_per_code = CareMomentQuery.relation(@plant.care_moments).
                               last_moment_per_code.

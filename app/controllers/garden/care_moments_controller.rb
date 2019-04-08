@@ -1,6 +1,6 @@
 class Garden::CareMomentsController < ApplicationController
   def index
-    @care_moments = current_user.care_moments.eager_load(:plant).order('date DESC')
+    @care_moments = current_user.care_moments.eager_load(:plant).order(date: :desc)
   end
 
   def create
