@@ -1,5 +1,5 @@
 class LeaderboardController < ApplicationController
   def show
-    @top_users = User.order('level DESC, care_points DESC').limit(10)
+    @top_users = User.top(10)
   end
 end

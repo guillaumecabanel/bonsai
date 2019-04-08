@@ -29,8 +29,8 @@
                 <% end %>
               </td>
               <td><%= user.nickname || 'N/A' %></td>
-              <td><%= user.plants.count %></td>
-              <td><%= user.care_moments.count %></td>
+              <td><%= user.plants_count %></td>
+              <td><%= user.care_moments_count %></td>
               <td class="text-right"><%= number_with_delimiter user.care_points, delimiter: " " %></td>
               <td class="text-center"><%= user.level %></td>
             </tr>
