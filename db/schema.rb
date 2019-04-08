@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_08_134312) do
+ActiveRecord::Schema.define(version: 2019_04_08_135044) do
 
   create_table "care_moments", force: :cascade do |t|
     t.integer "plant_id"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2019_04_08_134312) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["code"], name: "index_care_moments_on_code"
+    t.index ["plant_id"], name: "index_care_moments_on_plant_id"
   end
 
   create_table "plants", force: :cascade do |t|
@@ -33,6 +34,7 @@ ActiveRecord::Schema.define(version: 2019_04_08_134312) do
     t.boolean "favorite", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_plants_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
