@@ -8,10 +8,11 @@ class Garden::PlantsController < ApplicationController
   def show
     @moments = @plant.care_moments.order("date DESC")
 
-    @last_moment_per_code = @plant.care_moments.
-      select('max(date) AS date, code').
-      group(:code).
-      each_with_object({}) { |moment, moments| moments[moment.code] = moment }
+    @last_moment_per_code = CareMomentQuery.relation(@plant.care_moments).
+                              last_moment_per_code.
+                              each_with_object({}) do |moment, moments|
+                                moments[moment.code] = moment
+                              end
   end
 
   def new
