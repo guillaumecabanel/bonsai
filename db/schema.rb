@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_09_233946) do
+ActiveRecord::Schema.define(version: 2019_04_08_134312) do
 
   create_table "care_moments", force: :cascade do |t|
     t.integer "plant_id"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2018_12_09_233946) do
     t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["code"], name: "index_care_moments_on_code"
   end
 
   create_table "plants", force: :cascade do |t|
