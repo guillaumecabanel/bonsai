@@ -35,12 +35,7 @@
     </div>
     <div class="row justify-content-center">
       <% @gardener_other_plants.each do |plant| %>
-        <div class="plant">
-          <%= link_to plant_path(plant) do %>
-            <div class="bg-image plant-cover" style="background-image: url('<%= plant.photo_url %>')"></div>
-          <% end %>
-          <p class="plant-owner">by <%= plant.user.nickname %></p>
-        </div>
+        <%= render 'card', plant: plant %>
       <% end %>
       </div>
     </div>
