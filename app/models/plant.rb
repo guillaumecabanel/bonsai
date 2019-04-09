@@ -6,8 +6,4 @@ class Plant < ApplicationRecord
   has_many :care_moments, dependent: :destroy
 
   validates :name, presence: true
-
-  def recalculate_care_points!
-    update_attribute(:care_points, care_moments.sum(:points))
-  end
 end
