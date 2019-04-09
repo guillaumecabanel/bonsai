@@ -3,22 +3,22 @@
     <div class="col">
       <h1 class="">Garden</h1>
       <p class="lead">
-        Welcome <%= 'back' if @latest_plants.any? %> to your interior garden <%= current_user.nickname %>!
+        Welcome <%= 'back' if @latest_plants.any? %> to your interior garden <%= @user.nickname %>!
       </p>
 
       <p class="lead">
-        <% if current_user.care_points > 0 %>
-          In total, you gave <strong><%= number_with_delimiter current_user.care_points, delimiter: " " %> doses</strong> of care to your plants.
+        <% if @user.care_points > 0 %>
+          In total, you gave <strong><%= number_with_delimiter @user.care_points, delimiter: " " %> doses</strong> of care to your plants.
         <% end %>
 
-        <% if current_user.level > 0 %>
+        <% if @user.level > 0 %>
           <br>
-          Thanks to that, you reached <strong>level <%= current_user.level %></strong> out of <%= @last_level %>.
+          Thanks to that, you reached <strong>level <%= @user.level %></strong> out of <%= @last_level %>.
           <br>
-          <strong><%= current_user.points_to_next_level %> doses</strong> of care until next level.
+          <strong><%= @user.points_to_next_level %> doses</strong> of care until next level.
         <% end %>
 
-        <% if current_user.care_points > 0 %>
+        <% if @user.care_points > 0 %>
           <br>
           <%= link_to 'See history', garden_care_moments_path %>
         <% end %>
@@ -70,7 +70,7 @@
       <h2>Latest plants</h2>
       <% if @latest_plants.empty? %>
         <%= link_to 'New plant', new_garden_plant_path %>
-      <% elsif current_user.plants.count > 3 %>
+      <% elsif @user.plants.count > 3 %>
         <%= link_to 'See all plants', garden_plants_path %>
       <% end %>
 

@@ -16,7 +16,11 @@ module Users
     end
 
     def recalculate_level!
-      @user.update_attribute(:level, User.level_from_points(@user.care_points))
+      @user.update_attribute(:level, level_from_points(@user.care_points))
+    end
+
+    def level_from_points(points)
+      User::LEVELS.find { |level, range| range.include?(points) }[0]
     end
   end
 end
