@@ -37,8 +37,7 @@
           <p class="care-title">You haven't taken care of your plant yet.</p>
         <% end %>
         
-        <% CareMoment::MOMENTS.each do |code, specs| %>
-          <% next if @last_moment_per_code[code.to_s] && Date.today < @last_moment_per_code[code.to_s].date + specs[:min_frequency_in_days].days %>
+        <% @plant.needed_care_moment_codes.each do |code| %>
           <%= link_to code, garden_plant_care_moments_path(@plant, code: code), method: :post, class: "care-action btn btn-outline-#{care_moment_css_color(code)}" %>
         <% end %>
       </div>

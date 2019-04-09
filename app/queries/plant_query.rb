@@ -3,10 +3,9 @@ class PlantQuery < BaseQuery
     super(base_relation, Plant)
   end
 
-  def needing_care
-    selects    = []
-    joins      = []
-    conditions = []
+  def include_care_status
+    selects = []
+    joins   = []
 
     CareMoment::MOMENTS.each do |code, specs|
       expected_date = Date.tomorrow - specs[:min_frequency_in_days].days
@@ -22,18 +21,6 @@ class PlantQuery < BaseQuery
         END AS #{code}_needed
       EOF
 
-      conditions << <<~EOF
-        (
-          moment_#{code}.id IS NULL
-          OR
-          (
-            moment_#{code}.code = '#{code}'
-            AND
-            moment_#{code}.date < '#{expected_date}'
-          )
-        )
-      EOF
-
       joins << <<~EOF
         LEFT OUTER JOIN care_moments moment_#{code} on moment_#{code}.id = (
           SELECT id
@@ -45,9 +32,26 @@ class PlantQuery < BaseQuery
       EOF
     end
 
-    return select("plants.*, #{selects.join(', ')}").
-      joins(joins.join).
-      where(conditions.join(' OR ')).
-      order(:name)
+    select("plants.*, #{selects.join(', ')}").joins(joins.join)
+  end
+
+  def needing_care
+    conditions = CareMoment::MOMENTS.map do |code, specs|
+      expected_date = Date.tomorrow - specs[:min_frequency_in_days].days
+
+      <<~EOF
+        (
+          moment_#{code}.id IS NULL
+          OR
+          (
+            moment_#{code}.code = '#{code}'
+            AND
+            moment_#{code}.date < '#{expected_date}'
+          )
+        )
+      EOF
+    end
+
+    include_care_status.where(conditions.join(' OR '))
   end
 end

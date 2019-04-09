@@ -5,6 +5,6 @@ module CareMomentHelper
       repot: 'success',
       weed:  'secondary'
     }
-    action_classes[code] || 'secondary'
+    action_classes[code.to_sym] || 'secondary'
   end
 end

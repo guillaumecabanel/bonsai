@@ -13,6 +13,8 @@ class Garden::PlantsController < ApplicationController
                               each_with_object({}) do |moment, moments|
                                 moments[moment.code] = moment
                               end
+  
+    @plant = PlantPresenter.new(@plant)
   end
 
   def new
@@ -65,6 +67,6 @@ class Garden::PlantsController < ApplicationController
   end
 
   def set_plant
-    @plant = current_user.plants.find(params[:id])
+    @plant = PlantQuery.relation(current_user.plants).include_care_status.find(params[:id])
   end
 end
