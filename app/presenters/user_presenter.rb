@@ -1,10 +1,4 @@
-require 'delegate'
-
-class UserPresenter < SimpleDelegator
-  def self.wrap(users)
-    users.map { |user| new(user) }
-  end
-
+class UserPresenter < BasePresenter
   def points_to_next_level
     next_level = User::LEVELS[level + 1]
     return 0 unless next_level
