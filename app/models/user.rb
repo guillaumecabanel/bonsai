@@ -41,12 +41,4 @@ class User < ApplicationRecord
 
     next_level.min - care_points
   end
-
-  def recalculate_care_points!
-    update_attribute(:care_points, plants.sum(:care_points))
-  end
-
-  def recalculate_level!
-    update_attribute(:level, User.level_from_points(care_points))
-  end
 end
