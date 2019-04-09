@@ -1,0 +1,9 @@
+<%= simple_form_for [:garden, plant] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :age_in_months, as: :select, collection: 1..5, input_html: { class: "custom-select"} %>
+  <%= f.input :size, as: :select, collection: Plant::SIZES, input_html: { class: "custom-select" } %>
+  <%= f.input :room, as: :select, collection: Plant::ROOMS, input_html: { class: "custom-select" } %>
+  <%= f.input :photo_url %>
+  <%= f.submit class: 'btn btn-primary' %>
+  <%= link_to 'Cancel', plant.new_record? ? garden_plants_path : garden_plant_path(plant), class: 'btn btn-ligth' %>
+<% end %>
