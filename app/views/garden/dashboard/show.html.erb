@@ -50,7 +50,7 @@
                 </td>
                 <td class="align-middle"><%= link_to plant.name, garden_plant_path(plant) %></td>
                 <td class="align-middle">
-                  <% plant.needed_care_moments.each do |code| %>
+                  <% plant.needed_care_moment_codes.each do |code| %>
                     <%= link_to code, garden_plant_care_moments_path(plant, code: code, src: :dashboard), method: :post, class: "care-action btn btn-outline-#{care_moment_css_color(code)}" %>
                   <% end %>
                 </td>
