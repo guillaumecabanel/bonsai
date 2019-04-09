@@ -36,19 +36,10 @@
         <% else %>
           <p class="care-title">You haven't taken care of your plant yet.</p>
         <% end %>
-
+        
         <% CareMoment::MOMENTS.each do |code, specs| %>
           <% next if @last_moment_per_code[code.to_s] && Date.today < @last_moment_per_code[code.to_s].date + specs[:min_frequency_in_days].days %>
-
-          <% if code == :water %>
-            <%= link_to code, garden_plant_care_moments_path(@plant, code: code), method: :post, class: "care-action btn btn-outline-info" %>
-          <% elsif code == :repot %>
-            <%= link_to code, garden_plant_care_moments_path(@plant, code: code), method: :post, class: "care-action btn btn-outline-success" %>
-          <% elsif code == :weed %>
-            <%= link_to code, garden_plant_care_moments_path(@plant, code: code), method: :post, class: "care-action btn btn-outline-secondary" %>
-          <% else %>
-            <%= link_to code, garden_plant_care_moments_path(@plant, code: code), method: :post, class: "care-action btn btn-outline-secondary" %>
-          <% end %>
+          <%= link_to code, garden_plant_care_moments_path(@plant, code: code), method: :post, class: "care-action btn btn-outline-#{last_moment_action_class_for(code)}" %>
         <% end %>
       </div>
       <% if @moments.any? %>
