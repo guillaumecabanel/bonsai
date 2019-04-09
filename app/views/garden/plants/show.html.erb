@@ -39,7 +39,7 @@
         
         <% CareMoment::MOMENTS.each do |code, specs| %>
           <% next if @last_moment_per_code[code.to_s] && Date.today < @last_moment_per_code[code.to_s].date + specs[:min_frequency_in_days].days %>
-          <%= link_to code, garden_plant_care_moments_path(@plant, code: code), method: :post, class: "care-action btn btn-outline-#{last_moment_action_class_for(code)}" %>
+          <%= link_to code, garden_plant_care_moments_path(@plant, code: code), method: :post, class: "care-action btn btn-outline-#{care_moment_button_css_color(code)}" %>
         <% end %>
       </div>
       <% if @moments.any? %>
