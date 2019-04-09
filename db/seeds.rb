@@ -484,7 +484,6 @@ end
 puts 'Updating users care points / level'
 User.all.each do |user|
   Users::RecalculateCarePointsService.new(user).call
-  Users::RecalculateLevelService.new(user).call
 end
 
 puts 'Finished!'
