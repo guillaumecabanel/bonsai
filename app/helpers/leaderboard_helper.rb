@@ -1,11 +1,10 @@
 module LeaderboardHelper
   def leaderboard_medal_for(rank)
-    case rank
-    when 1 then '🥇'
-    when 2 then '🥈'
-    when 3 then '🥉'
-    else
-      '🏅'
-    end
+    medals = {
+      1 => '🥇',
+      2 => '🥈',
+      3 => '🥉'
+    }
+    medals[rank] || '🏅'
   end
 end
