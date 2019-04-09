@@ -1,5 +1,5 @@
 module CareMomentHelper
-  def care_moment_button_css_color(code)
+  def care_moment_css_color(code)
     action_classes = {
       water: 'info',
       repot: 'success',

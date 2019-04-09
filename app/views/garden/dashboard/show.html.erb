@@ -57,7 +57,7 @@
                   <% moments = CareMoment::MOMENTS.keys if moments.empty? %>
 
                   <% moments.each do |code| %>
-                    <%= link_to code, garden_plant_care_moments_path(plant, code: code, src: :dashboard), method: :post, class: "care-action btn btn-outline-#{care_moment_button_css_color(code)}" %>
+                    <%= link_to code, garden_plant_care_moments_path(plant, code: code, src: :dashboard), method: :post, class: "care-action btn btn-outline-#{care_moment_css_color(code)}" %>
                   <% end %>
                 </td>
               </tr>

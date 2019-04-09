@@ -39,7 +39,7 @@
         
         <% CareMoment::MOMENTS.each do |code, specs| %>
           <% next if @last_moment_per_code[code.to_s] && Date.today < @last_moment_per_code[code.to_s].date + specs[:min_frequency_in_days].days %>
-          <%= link_to code, garden_plant_care_moments_path(@plant, code: code), method: :post, class: "care-action btn btn-outline-#{care_moment_button_css_color(code)}" %>
+          <%= link_to code, garden_plant_care_moments_path(@plant, code: code), method: :post, class: "care-action btn btn-outline-#{care_moment_css_color(code)}" %>
         <% end %>
       </div>
       <% if @moments.any? %>
@@ -58,15 +58,7 @@
                 <td><%= index + 1 %></td>
                 <td><%= l(moment.date, format: :short) %></td>
                 <td>
-                  <% if moment.code == 'water' %>
-                    <span class="care-badge badge badge-info"><%= moment.code %></span>
-                  <% elsif moment.code == 'repot' %>
-                    <span class="care-badge badge badge-success"><%= moment.code %></span>
-                  <% elsif moment.code == 'weed' %>
-                    <span class="care-badge badge badge-secondary"><%= moment.code %></span>
-                  <% else %>
-                    <span class="care-badge badge badge-secondary"><%= moment.code %></span>
-                  <% end %>
+                  <span class="care-badge badge badge-<%= care_moment_css_color(moment.code) %>"><%= moment.code %></span>
                 </td>
                 <td><%= moment.points %></td>
               </tr>
