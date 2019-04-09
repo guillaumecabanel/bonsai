@@ -10,13 +10,7 @@
         <p>
           I'm <strong> <%= pluralize @plant.age_in_months, 'month' %></strong> old,
 
-          <% if @plant.size == 'small' %>
-            I'm <strong>quite small</strong>
-          <% elsif @plant.size == 'medium' %>
-            I'm <strong>almost tall</strong>
-          <% else %>
-            I'm <strong>so tall</strong>
-          <% end %>
+          I'm <strong><%= human_plant_size @plant.size %></strong>
 
           and you can find me in the <strong><%= @plant.room %></strong>.
         </p>

@@ -7,4 +7,12 @@ module PlantHelper
     }
     action_classes[code] || 'secondary'
   end
+
+  def human_plant_size(size)
+    sizes = {
+      'small' => 'quite small',
+      'medium' => 'almost tall'
+    }
+    sizes[size] || 'so tall'
+  end
 end
