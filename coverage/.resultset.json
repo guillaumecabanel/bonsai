@@ -183,6 +183,19 @@
         null,
         null
       ],
+      "/home/guillaume/pro/learning/advanced_rails/bonsai/app/services/plants/recalculate_care_points_service.rb": [
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null
+      ],
       "/home/guillaume/pro/learning/advanced_rails/bonsai/app/services/users/recalculate_care_points_service.rb": [
         1,
         1,
@@ -460,19 +473,6 @@
         0,
         0
       ],
-      "/home/guillaume/pro/learning/advanced_rails/bonsai/app/services/plants/recalculate_care_points_service.rb": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        null,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
       "/home/guillaume/pro/learning/advanced_rails/bonsai/app/services/generate_care_moment_service.rb": [
         0,
         0,
@@ -511,6 +511,6 @@
         0
       ]
     },
-    "timestamp": 1554917694
+    "timestamp": 1554919089
   }
 }
