@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe UserPresenter, type: 'presenter' do
-  subject(:user_presenter) do
+  subject(:presenter) do
     UserPresenter.new(user)
   end
 
@@ -15,18 +15,18 @@ RSpec.describe UserPresenter, type: 'presenter' do
  
   describe '#points_to_next_level' do
     it 'returns an integer' do
-      expect(user_presenter.points_to_next_level).to be_an(Integer)
+      expect(presenter.points_to_next_level).to be_an(Integer)
     end
 
     it 'returns the number of points to get the next level' do
-      expect(user_presenter.points_to_next_level).to eq(5)
+      expect(presenter.points_to_next_level).to eq(5)
     end
 
     context 'when the user has the level max' do
       before { user.level = 6 }
 
       it 'returns 0' do
-        expect(user_presenter.points_to_next_level).to eq(0)
+        expect(presenter.points_to_next_level).to eq(0)
       end
     end
 
