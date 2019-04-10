@@ -1,8 +1,10 @@
 FactoryBot.define do
   factory :user do
-    email       { 'email' }
-    nickname    { 'John' }
-    level       { 0 }
-    care_points { 0 }
+    password    { 'password' }
+    nickname    { 'Guillaume' }
+    level       { 1 }
+    care_points { 15 }
+
+    sequence(:email) { |index| "user#{index}@example.com" }
   end
 end
