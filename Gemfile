@@ -24,6 +24,13 @@ gem 'webpacker', '~> 3.5'
 group :development, :test do
   gem 'pry-rails'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails'
+  gem 'launchy'
+  gem 'selenium-webdriver'
+  gem 'geckodriver-helper'
+  gem 'capybara'
+  gem "factory_bot_rails"
+  gem 'shoulda-matchers'
 end
 
 group :development do
